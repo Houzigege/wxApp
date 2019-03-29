@@ -6,24 +6,12 @@ import {
 } from '../../lib/index.js';
 
 Page(connect(({ index }) => ({ index }))({
-
-   /**
-    * 页面的初始数据
-    */
    data: {
-     nvabarData: {
-       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-       title: '我的主页', //导航栏 中间的标题
+     navBarData: {
+       showCapsule: 0, //是否显示左上角回退图标   1表示显示    0表示不显示
+       title: '首页',
      },
-     imgUrls: [
-       'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-       'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-       'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-     ],
-     indicatorDots: false,
-     autoplay: false,
-     interval: 5000,
-     duration: 1000
+     DotStyle: ''
    },
 
    /**
@@ -31,21 +19,26 @@ Page(connect(({ index }) => ({ index }))({
     */
    onLoad(options) {
      this.dispatch({
-       type: 'index/adjust',
-       payload: 2
-     })
+       type: 'index/login',
+     });
+
+     // this.dispatch({
+     //   type: 'index/getCode',
+     // })
    },
 
    /**
     * 生命周期函数--监听页面初次渲染完成
     */
    onReady() {
+
    },
 
    /**
     * 生命周期函数--监听页面显示
     */
    onShow() {
+
    },
 
    /**
@@ -82,47 +75,12 @@ Page(connect(({ index }) => ({ index }))({
    onShareAppMessage() {
 
    },
-  changeIndicatorDots(e) {
+
+  DotStyle(e) {
     this.setData({
-      indicatorDots: !this.data.indicatorDots
+      DotStyle: e.detail.value
     })
   },
-  changeAutoplay(e) {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-  intervalChange(e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-  durationChange(e) {
-    this.setData({
-      duration: e.detail.value
-    })
-  },
-
-   plus() {
-     this.dispatch({
-       type: 'index/adjust',
-       payload: 1
-     })
-   },
-
-   minus(){
-     this.dispatch({
-       type: 'index/adjust',
-       payload: -1
-     })
-   },
-
-
-   login(){
-     this.dispatch({
-       type: 'index/login',
-     })
-   },
 
    goDouyu(){
      this.dispatch(routerRedux({
@@ -131,6 +89,6 @@ Page(connect(({ index }) => ({ index }))({
          type: 'LOL',
        },
      }))
-
    }
- }))
+
+ }));

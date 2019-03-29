@@ -1,9 +1,6 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/douyu/index",
-    "pages/douyu/room",
-    "pages/douyu/room1"
+    "pages/index/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -11,7 +8,11 @@
     "navigationBarTextStyle":"black",
     "navigationStyle": "custom"
   },
+  "usingComponents": {
+    "nav-bar": "./component/navBar/index"
+  },
   "tabBar": {
+    "custom": true,
     "color": "#333",
     "selectedColor": "#f00",
     "backgroundColor": "#ff0",
@@ -19,21 +20,23 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "image/icon_component.png",
-        "selectedIconPath": "image/icon_component_HL.png"
+        "icon": "icon-home",
+        "text": "首页"
       },
       {
-        "pagePath": "pages/douyu/index",
-        "text": "分类",
-        "iconPath": "image/icon_component.png",
-        "selectedIconPath": "image/icon_component_HL.png"
+        "pagePath": "pages/index/index",
+        "icon": "icon-goods",
+        "text": "商品"
       },
       {
-        "pagePath": "pages/douyu/room1",
-        "text": "我的",
-        "iconPath": "image/icon_component.png",
-        "selectedIconPath": "image/icon_component_HL.png"
+        "pagePath": "pages/index/index",
+        "icon": "icon-mail",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "icon": "icon-my",
+        "text": "我的"
       }
     ]
   }

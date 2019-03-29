@@ -3,11 +3,12 @@ import {
   _wx
 } from '../lib/index.js';
 
+import * as indexService  from '../services/index';
+
 export default {
   namespace: 'index',
   state: {
-    count: 0,
-    code: '点击下方按钮获取code'
+    user: {}
   },
 
   reducers: {
@@ -17,23 +18,27 @@ export default {
   },
 
   effects: {
-    *adjust({ payload }, { call, put, select }) {
-      let count = yield select((_)=>_.index.count)
-      count += payload;
+    *getCode({ payload }, { call, put, select }) {
+      const code = yield call(indexService.getCode, payload);
+      console.log("code", code, );
+      if (code) {
+        console.log("2222222222222222222222222222", select);
+      }
       yield put({
         type: 'save',
         payload: {
-          count
+          code : code.data
         }
       })
     },
 
     *login({ payload }, { call, put, select }) {
-      let res = yield _wx.login()
+      let res = yield _wx.login();
+      console.log('login', res);
       yield put({
         type: 'save',
         payload: {
-          code : res.code
+          user : res.code
         }
       })
     },

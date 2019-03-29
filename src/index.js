@@ -157,19 +157,17 @@ const creatApp = (opts) => {
 }
 
 const request = (opts) => {
-
     return new Promise((resolve, reject) => {
+      opts.url = 'http://39.105.201.251/distributor/' + opts.url;
         opts.success = ({ data, statusCode, header }) => {
             if (statusCode < 200 || statusCode >= 300) {
                 reject({ data, statusCode, header })
             }
-            resolve({ data, statusCode, header })
-        }
-
+            resolve({ data, statusCode, header });
+        };
         opts.fail = (error) => {
-            reject(error)
-        }
-
+            reject(error);
+        };
         wx.request(opts)
     })
 }
@@ -211,7 +209,7 @@ const routerRedux = ({ pathname, query }) => {
 /**
  * 这段代码复制来自
  * https://github.com/maichong/labrador/blob/ed416658f1ab5395e81a847b6255d47857a39410/index.js#L55
- * 
+ *
  * 主要作用是把微信的接口直接用Promise封装
  */
 
